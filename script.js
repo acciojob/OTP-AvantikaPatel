@@ -1,24 +1,17 @@
-//your JS code here. If required.
-const inputs = document.querySelectorAll(".code");
+const codes = document.querySelectorAll(".code");
+codes[0].focus();
 
-inputs.forEach((input, index) => {
-  input.addEventListener("input", (e) => {
-    const value = e.target.value;
-    if (value.length > 0 && index < inputs.length - 1) {
-      inputs[index + 1].focus();
+codes.forEach((code, idx) => {
+  code.addEventListener("input", (event) => {
+    if (event.target.value.length === 1 && idx < codes.length - 1) {
+      codes[idx + 1].focus();
     }
   });
-
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Backspace") {
-      if (input.value === "" && index > 0) {
-        inputs[index - 1].focus();
-      } else {
-        input.value = "";
-      }
+  code.addEventListener("keydown", (event) => {
+    if (event.key === "Backspace" && !event.target.value && idx > 0) {
+      codes[idx - 1].focus();
     }
   });
 });
-
 // Focus the first input on page load
 window.addEventListener("load", () => inputs[0].focus());
