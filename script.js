@@ -12,6 +12,4 @@ codes.forEach((code, idx) => {
       codes[idx - 1].focus();
     }
   });
-});
-// Focus the first input on page load
-window.addEventListener("load", () => inputs[0].focus());
+});ddEventListener("load", () => inputs[0].focus());
